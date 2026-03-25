@@ -64,3 +64,25 @@ if build_docs
     build_by_default: true,
   )
 endif
+
+# ABI/constant validation tests for the -sys crates.
+# These compile C code to cross-validate struct layouts and constant values
+# against the Rust FFI bindings.
+test(
+  'fwupd-sys-abi',
+  cargo,
+  args: ['test'] + cargo_args + ['-p', 'fwupd-sys'],
+  env: cargo_env,
+  depends: [fwupd],
+  timeout: 120,
+  suite: 'rust',
+)
+test(
+  'fwupdplugin-sys-abi',
+  cargo,
+  args: ['test'] + cargo_args + ['-p', 'fwupdplugin-sys'],
+  env: cargo_env,
+  depends: [fwupdplugin],
+  timeout: 120,
+  suite: 'rust',
+)
