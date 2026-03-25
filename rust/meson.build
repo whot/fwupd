@@ -86,3 +86,12 @@ test(
   timeout: 120,
   suite: 'rust',
 )
+test(
+  'fwupdplugin',
+  cargo,
+  args: ['test'] + cargo_args + ['-p', 'fwupdplugin'],
+  env: cargo_env,
+  depends: [fwupdplugin],
+  timeout: 120,
+  suite: 'rust',
+)

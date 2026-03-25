@@ -3,4 +3,5 @@ resolver = "2"
 members = [
     "fwupd-sys",
     "fwupdplugin-sys",
+    "fwupdplugin",
 ]
