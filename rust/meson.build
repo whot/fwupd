@@ -86,6 +86,7 @@ test(
   timeout: 120,
   suite: 'rust',
 )
+
 test(
   'fwupdplugin',
   cargo,
@@ -94,4 +95,66 @@ test(
   depends: [fwupdplugin],
   timeout: 120,
   suite: 'rust',
+)
+
+# Build the example plugin as a smoke test that everything compiles.
+# The output .so follows the fwupd naming convention: libfu_plugin_<name>.so
+#
+# We use 'sh -c' to run cargo and then copy the output to where meson
+# expects it, since cargo writes to its own target directory layout.
+#
+# fwupd expects plugins in builddir/plugins/<name>/... so we need to copy it there.
+# The need for this goes away once rust code is promoted to be in-tree instead of
+# within the rust/ directory.
+rust_example_plugin = custom_target(
+  'rust-plugin-example',
+  output: 'libfu_plugin_example.so',
+  command: [
+    'sh', '-c',
+    ' '.join([
+      cargo.full_path(), 'build',
+    ] + cargo_args + [
+      '-p', 'fu-plugin-example',
+      '&&',
+      'cp',
+      join_paths(cargo_target_dir, cargo_profile_dir, 'libfu_plugin_example.so'),
+      '@OUTPUT@',
+      '&&',
+      'mkdir', '-p',
+      join_paths(meson.project_build_root(), 'plugins', 'example'),
+      '&&',
+      'cp',
+      '@OUTPUT@',
+      join_paths(meson.project_build_root(), 'plugins', 'example', 'libfu_plugin_example.so'),
+    ]),
+  ],
+  env: cargo_env,
+  depends: [fwupdplugin],
+  depend_files: [
+    files(
+      'Cargo.toml',
+      'Cargo.lock',
+      'fwupdplugin/Cargo.toml',
+      'fwupdplugin/src/lib.rs',
+      'fwupdplugin/src/plugin.rs',
+      'fwupdplugin/src/device.rs',
+      'fwupdplugin/src/device_subclass.rs',
+      'fwupdplugin/src/firmware.rs',
+      'fwupdplugin/src/firmware_subclass.rs',
+      'fwupdplugin/src/context.rs',
+      'fwupdplugin/src/progress.rs',
+      'fwupdplugin/src/udev_device.rs',
+      'fwupdplugin/src/usb_device.rs',
+      'fwupdplugin/src/hid_device.rs',
+      'fwupdplugin-sys/Cargo.toml',
+      'fwupdplugin-sys/src/lib.rs',
+      'fwupd-sys/Cargo.toml',
+      'fwupd-sys/src/lib.rs',
+      'plugins/fu-plugin-example/Cargo.toml',
+      'plugins/fu-plugin-example/src/lib.rs',
+    ),
+  ],
+  console: true,
+  install: false,
+  build_by_default: true,
 )

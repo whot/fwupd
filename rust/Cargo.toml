@@ -4,4 +4,5 @@ members = [
     "fwupd-sys",
     "fwupdplugin-sys",
     "fwupdplugin",
+    "plugins/fu-plugin-example",
 ]
