@@ -864,6 +864,9 @@ endif
 allow_uefi = host_machine.system() in ['linux', 'freebsd'] and \
   host_machine.cpu_family() in ['x86_64', 'aarch64', 'riscv64', 'loongarch64']
 
+cargo = find_program('cargo', required: get_option('rust-plugins'))
+enable_rust_plugins = get_option('rust-plugins').allowed() and cargo.found()
+
 subdir('generate-build')
 subdir('libfwupd')
 if polkit.found()
@@ -882,6 +885,9 @@ if build_standalone
   plugin_incdirs = [root_incdir, fwupd_incdir, fwupdplugin_incdir]
   plugin_libs = [fwupd, fwupdplugin]
   subdir('plugins')
+  if enable_rust_plugins
+    subdir('rust')
+  endif
   subdir('src')
   subdir('docs')
   subdir('data')
@@ -934,6 +940,7 @@ summary(
     'valgrind': valgrind,
     'polkit': polkit,
     'python3': python3,
+    'rust-plugins': enable_rust_plugins,
     'supported_build': supported_build,
     'static_analysis': static_analysis,
     'tests': get_option('tests'),
