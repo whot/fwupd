@@ -10,6 +10,8 @@
 
 G_BEGIN_DECLS
 
+#ifndef __GI_SCANNER__
+
 /**
  * FWUPD_RESULT_KEY_APPSTREAM_ID:
  *
@@ -686,5 +688,7 @@ G_BEGIN_DECLS
  * The D-Bus type signature string is 's' i.e. a string.
  **/
 #define FWUPD_RESULT_KEY_DEVICE_NAME "DeviceName"
+
+#endif /* __GI_SCANNER__ */
 
 G_END_DECLS

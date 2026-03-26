@@ -11,6 +11,8 @@
 
 G_BEGIN_DECLS
 
+#ifndef __GI_SCANNER__
+
 /**
  * FWUPD_SECURITY_ATTR_ID_PREBOOT_DMA_PROTECTION:
  *
@@ -427,6 +429,8 @@ G_BEGIN_DECLS
  * Since: 2.1.1
  **/
 #define FWUPD_SECURITY_ATTR_ID_AMD_PLATFORM_SECURE_BOOT "org.fwupd.hsi.Amd.PlatformSecureBoot"
+
+#endif /* __GI_SCANNER__ */
 
 FwupdSecurityAttr *
 fwupd_security_attr_copy(FwupdSecurityAttr *self) G_GNUC_NON_NULL(1);
