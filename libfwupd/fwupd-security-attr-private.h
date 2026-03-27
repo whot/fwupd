@@ -11,10 +11,8 @@
 
 G_BEGIN_DECLS
 
-#ifndef __GI_SCANNER__
-
 /**
- * FWUPD_SECURITY_ATTR_ID_PREBOOT_DMA_PROTECTION:
+ * FWUPD_SECURITY_ATTR_ID_PREBOOT_DMA_PROTECTION: (skip)
  *
  * Host Security ID attribute for Pre-boot DMA protection
  *
@@ -24,7 +22,7 @@ G_BEGIN_DECLS
  **/
 #define FWUPD_SECURITY_ATTR_ID_PREBOOT_DMA_PROTECTION "org.fwupd.hsi.PrebootDma"
 /**
- * FWUPD_SECURITY_ATTR_ID_ENCRYPTED_RAM:
+ * FWUPD_SECURITY_ATTR_ID_ENCRYPTED_RAM: (skip)
  *
  * Host Security ID attribute indicating encrypted RAM available
  *
@@ -32,7 +30,7 @@ G_BEGIN_DECLS
  **/
 #define FWUPD_SECURITY_ATTR_ID_ENCRYPTED_RAM "org.fwupd.hsi.EncryptedRam"
 /**
- * FWUPD_SECURITY_ATTR_ID_FWUPD_ATTESTATION:
+ * FWUPD_SECURITY_ATTR_ID_FWUPD_ATTESTATION: (skip)
  *
  * Host Security ID attribute for attestation
  *
@@ -40,7 +38,7 @@ G_BEGIN_DECLS
  **/
 #define FWUPD_SECURITY_ATTR_ID_FWUPD_ATTESTATION "org.fwupd.hsi.Fwupd.Attestation"
 /**
- * FWUPD_SECURITY_ATTR_ID_FWUPD_PLUGINS:
+ * FWUPD_SECURITY_ATTR_ID_FWUPD_PLUGINS: (skip)
  *
  * Host Security ID attribute for plugins
  *
@@ -48,7 +46,7 @@ G_BEGIN_DECLS
  **/
 #define FWUPD_SECURITY_ATTR_ID_FWUPD_PLUGINS "org.fwupd.hsi.Fwupd.Plugins"
 /**
- * FWUPD_SECURITY_ATTR_ID_FWUPD_UPDATES:
+ * FWUPD_SECURITY_ATTR_ID_FWUPD_UPDATES: (skip)
  *
  * Host Security ID attribute for updates
  *
@@ -56,7 +54,7 @@ G_BEGIN_DECLS
  **/
 #define FWUPD_SECURITY_ATTR_ID_FWUPD_UPDATES "org.fwupd.hsi.Fwupd.Updates"
 /**
- * FWUPD_SECURITY_ATTR_ID_INTEL_BOOTGUARD_ENABLED:
+ * FWUPD_SECURITY_ATTR_ID_INTEL_BOOTGUARD_ENABLED: (skip)
  *
  * Host Security ID attribute for Intel Bootguard enabled
  *
@@ -64,7 +62,7 @@ G_BEGIN_DECLS
  **/
 #define FWUPD_SECURITY_ATTR_ID_INTEL_BOOTGUARD_ENABLED "org.fwupd.hsi.IntelBootguard.Enabled"
 /**
- * FWUPD_SECURITY_ATTR_ID_INTEL_BOOTGUARD_VERIFIED:
+ * FWUPD_SECURITY_ATTR_ID_INTEL_BOOTGUARD_VERIFIED: (skip)
  *
  * Host Security ID attribute for Intel Bootguard verified
  *
@@ -72,7 +70,7 @@ G_BEGIN_DECLS
  **/
 #define FWUPD_SECURITY_ATTR_ID_INTEL_BOOTGUARD_VERIFIED "org.fwupd.hsi.IntelBootguard.Verified"
 /**
- * FWUPD_SECURITY_ATTR_ID_INTEL_BOOTGUARD_ACM:
+ * FWUPD_SECURITY_ATTR_ID_INTEL_BOOTGUARD_ACM: (skip)
  *
  * Host Security ID attribute for Intel Bootguard ACM
  *
@@ -80,7 +78,7 @@ G_BEGIN_DECLS
  **/
 #define FWUPD_SECURITY_ATTR_ID_INTEL_BOOTGUARD_ACM "org.fwupd.hsi.IntelBootguard.Acm"
 /**
- * FWUPD_SECURITY_ATTR_ID_INTEL_BOOTGUARD_POLICY:
+ * FWUPD_SECURITY_ATTR_ID_INTEL_BOOTGUARD_POLICY: (skip)
  *
  * Host Security ID attribute for Intel Bootguard policy
  *
@@ -88,7 +86,7 @@ G_BEGIN_DECLS
  **/
 #define FWUPD_SECURITY_ATTR_ID_INTEL_BOOTGUARD_POLICY "org.fwupd.hsi.IntelBootguard.Policy"
 /**
- * FWUPD_SECURITY_ATTR_ID_INTEL_BOOTGUARD_OTP:
+ * FWUPD_SECURITY_ATTR_ID_INTEL_BOOTGUARD_OTP: (skip)
  *
  * Host Security ID attribute for Intel Bootguard OTP fuse
  *
@@ -96,7 +94,7 @@ G_BEGIN_DECLS
  **/
 #define FWUPD_SECURITY_ATTR_ID_INTEL_BOOTGUARD_OTP "org.fwupd.hsi.IntelBootguard.Otp"
 /**
- * FWUPD_SECURITY_ATTR_ID_IOMMU:
+ * FWUPD_SECURITY_ATTR_ID_IOMMU: (skip)
  *
  * Host Security ID attribute for IOMMU
  *
@@ -104,7 +102,7 @@ G_BEGIN_DECLS
  **/
 #define FWUPD_SECURITY_ATTR_ID_IOMMU "org.fwupd.hsi.Iommu"
 /**
- * FWUPD_SECURITY_ATTR_ID_KERNEL_LOCKDOWN:
+ * FWUPD_SECURITY_ATTR_ID_KERNEL_LOCKDOWN: (skip)
  *
  * Host Security ID attribute for kernel lockdown
  *
@@ -112,7 +110,7 @@ G_BEGIN_DECLS
  **/
 #define FWUPD_SECURITY_ATTR_ID_KERNEL_LOCKDOWN "org.fwupd.hsi.Kernel.Lockdown"
 /**
- * FWUPD_SECURITY_ATTR_ID_KERNEL_SWAP:
+ * FWUPD_SECURITY_ATTR_ID_KERNEL_SWAP: (skip)
  *
  * Host Security ID attribute for kernel swap
  *
@@ -120,7 +118,7 @@ G_BEGIN_DECLS
  **/
 #define FWUPD_SECURITY_ATTR_ID_KERNEL_SWAP "org.fwupd.hsi.Kernel.Swap"
 /**
- * FWUPD_SECURITY_ATTR_ID_KERNEL_TAINTED:
+ * FWUPD_SECURITY_ATTR_ID_KERNEL_TAINTED: (skip)
  *
  * Host Security ID attribute for kernel taint
  *
@@ -128,7 +126,7 @@ G_BEGIN_DECLS
  **/
 #define FWUPD_SECURITY_ATTR_ID_KERNEL_TAINTED "org.fwupd.hsi.Kernel.Tainted"
 /**
- * FWUPD_SECURITY_ATTR_ID_MEI_MANUFACTURING_MODE:
+ * FWUPD_SECURITY_ATTR_ID_MEI_MANUFACTURING_MODE: (skip)
  *
  * Host Security ID attribute for Intel ME manufacturing mode
  *
@@ -136,7 +134,7 @@ G_BEGIN_DECLS
  **/
 #define FWUPD_SECURITY_ATTR_ID_MEI_MANUFACTURING_MODE "org.fwupd.hsi.Mei.ManufacturingMode"
 /**
- * FWUPD_SECURITY_ATTR_ID_MEI_OVERRIDE_STRAP:
+ * FWUPD_SECURITY_ATTR_ID_MEI_OVERRIDE_STRAP: (skip)
  *
  * Host Security ID attribute for Intel ME override strap
  *
@@ -144,7 +142,7 @@ G_BEGIN_DECLS
  **/
 #define FWUPD_SECURITY_ATTR_ID_MEI_OVERRIDE_STRAP "org.fwupd.hsi.Mei.OverrideStrap"
 /**
- * FWUPD_SECURITY_ATTR_ID_MEI_KEY_MANIFEST:
+ * FWUPD_SECURITY_ATTR_ID_MEI_KEY_MANIFEST: (skip)
  *
  * Host Security ID attribute for Intel ME Key Manifest
  *
@@ -152,7 +150,7 @@ G_BEGIN_DECLS
  **/
 #define FWUPD_SECURITY_ATTR_ID_MEI_KEY_MANIFEST "org.fwupd.hsi.Mei.KeyManifest"
 /**
- * FWUPD_SECURITY_ATTR_ID_MEI_VERSION:
+ * FWUPD_SECURITY_ATTR_ID_MEI_VERSION: (skip)
  *
  * Host Security ID attribute for Intel ME version
  *
@@ -160,7 +158,7 @@ G_BEGIN_DECLS
  **/
 #define FWUPD_SECURITY_ATTR_ID_MEI_VERSION "org.fwupd.hsi.Mei.Version"
 /**
- * FWUPD_SECURITY_ATTR_ID_SPI_BIOSWE:
+ * FWUPD_SECURITY_ATTR_ID_SPI_BIOSWE: (skip)
  *
  * Host Security ID attribute for Intel SPI BIOSWE configuration
  *
@@ -168,7 +166,7 @@ G_BEGIN_DECLS
  **/
 #define FWUPD_SECURITY_ATTR_ID_SPI_BIOSWE "org.fwupd.hsi.Spi.Bioswe"
 /**
- * FWUPD_SECURITY_ATTR_ID_SPI_BLE:
+ * FWUPD_SECURITY_ATTR_ID_SPI_BLE: (skip)
  *
  * Host Security ID attribute for Intel SPI BLE configuration
  *
@@ -176,7 +174,7 @@ G_BEGIN_DECLS
  **/
 #define FWUPD_SECURITY_ATTR_ID_SPI_BLE "org.fwupd.hsi.Spi.Ble"
 /**
- * FWUPD_SECURITY_ATTR_ID_SPI_SMM_BWP:
+ * FWUPD_SECURITY_ATTR_ID_SPI_SMM_BWP: (skip)
  *
  * Host Security ID attribute for Intel SPI SMM BWP
  *
@@ -184,7 +182,7 @@ G_BEGIN_DECLS
  **/
 #define FWUPD_SECURITY_ATTR_ID_SPI_SMM_BWP "org.fwupd.hsi.Spi.SmmBwp"
 /**
- * FWUPD_SECURITY_ATTR_ID_SPI_DESCRIPTOR:
+ * FWUPD_SECURITY_ATTR_ID_SPI_DESCRIPTOR: (skip)
  *
  * Host Security ID attribute for Intel SPI descriptor
  *
@@ -192,7 +190,7 @@ G_BEGIN_DECLS
  **/
 #define FWUPD_SECURITY_ATTR_ID_SPI_DESCRIPTOR "org.fwupd.hsi.Spi.Descriptor"
 /**
- * FWUPD_SECURITY_ATTR_ID_SUSPEND_TO_IDLE:
+ * FWUPD_SECURITY_ATTR_ID_SUSPEND_TO_IDLE: (skip)
  *
  * Host Security ID attribute for Suspend to Idle
  *
@@ -200,7 +198,7 @@ G_BEGIN_DECLS
  **/
 #define FWUPD_SECURITY_ATTR_ID_SUSPEND_TO_IDLE "org.fwupd.hsi.SuspendToIdle"
 /**
- * FWUPD_SECURITY_ATTR_ID_SUSPEND_TO_RAM:
+ * FWUPD_SECURITY_ATTR_ID_SUSPEND_TO_RAM: (skip)
  *
  * Host Security ID attribute for Suspend to RAM
  *
@@ -208,7 +206,7 @@ G_BEGIN_DECLS
  **/
 #define FWUPD_SECURITY_ATTR_ID_SUSPEND_TO_RAM "org.fwupd.hsi.SuspendToRam"
 /**
- * FWUPD_SECURITY_ATTR_ID_TPM_EMPTY_PCR:
+ * FWUPD_SECURITY_ATTR_ID_TPM_EMPTY_PCR: (skip)
  *
  * Host Security ID attribute for empty PCR
  *
@@ -216,7 +214,7 @@ G_BEGIN_DECLS
  **/
 #define FWUPD_SECURITY_ATTR_ID_TPM_EMPTY_PCR "org.fwupd.hsi.Tpm.EmptyPcr"
 /**
- * FWUPD_SECURITY_ATTR_ID_TPM_RECONSTRUCTION_PCR0:
+ * FWUPD_SECURITY_ATTR_ID_TPM_RECONSTRUCTION_PCR0: (skip)
  *
  * Host Security ID attribute for TPM PCR0 reconstruction
  *
@@ -224,7 +222,7 @@ G_BEGIN_DECLS
  **/
 #define FWUPD_SECURITY_ATTR_ID_TPM_RECONSTRUCTION_PCR0 "org.fwupd.hsi.Tpm.ReconstructionPcr0"
 /**
- * FWUPD_SECURITY_ATTR_ID_TPM_VERSION_20:
+ * FWUPD_SECURITY_ATTR_ID_TPM_VERSION_20: (skip)
  *
  * Host Security ID attribute for TPM 2.0
  *
@@ -232,7 +230,7 @@ G_BEGIN_DECLS
  **/
 #define FWUPD_SECURITY_ATTR_ID_TPM_VERSION_20 "org.fwupd.hsi.Tpm.Version20"
 /**
- * FWUPD_SECURITY_ATTR_ID_UEFI_SECUREBOOT:
+ * FWUPD_SECURITY_ATTR_ID_UEFI_SECUREBOOT: (skip)
  *
  * Host Security ID attribute for UEFI secure boot
  *
@@ -240,7 +238,7 @@ G_BEGIN_DECLS
  **/
 #define FWUPD_SECURITY_ATTR_ID_UEFI_SECUREBOOT "org.fwupd.hsi.Uefi.SecureBoot"
 /**
- * FWUPD_SECURITY_ATTR_ID_UEFI_BOOTSERVICE_VARS:
+ * FWUPD_SECURITY_ATTR_ID_UEFI_BOOTSERVICE_VARS: (skip)
  *
  * Host Security ID attribute indicating if Bootservice-only variables are hidden.
  *
@@ -248,7 +246,7 @@ G_BEGIN_DECLS
  **/
 #define FWUPD_SECURITY_ATTR_ID_UEFI_BOOTSERVICE_VARS "org.fwupd.hsi.Uefi.BootserviceVars"
 /**
- * FWUPD_SECURITY_ATTR_ID_PLATFORM_DEBUG_ENABLED:
+ * FWUPD_SECURITY_ATTR_ID_PLATFORM_DEBUG_ENABLED: (skip)
  *
  * Host Security ID attribute for parts with debugging capabilities enabled
  *
@@ -259,7 +257,7 @@ G_BEGIN_DECLS
  **/
 #define FWUPD_SECURITY_ATTR_ID_PLATFORM_DEBUG_ENABLED "org.fwupd.hsi.PlatformDebugEnabled"
 /**
- * FWUPD_SECURITY_ATTR_ID_PLATFORM_FUSED:
+ * FWUPD_SECURITY_ATTR_ID_PLATFORM_FUSED: (skip)
  *
  * Host Security ID attribute for fused parts
  *
@@ -267,7 +265,7 @@ G_BEGIN_DECLS
  **/
 #define FWUPD_SECURITY_ATTR_ID_PLATFORM_FUSED "org.fwupd.hsi.PlatformFused"
 /**
- * FWUPD_SECURITY_ATTR_ID_PLATFORM_DEBUG_LOCKED:
+ * FWUPD_SECURITY_ATTR_ID_PLATFORM_DEBUG_LOCKED: (skip)
  *
  * Host Security ID attribute for parts locked from debugging
  *
@@ -278,7 +276,7 @@ G_BEGIN_DECLS
  **/
 #define FWUPD_SECURITY_ATTR_ID_PLATFORM_DEBUG_LOCKED "org.fwupd.hsi.PlatformDebugLocked"
 /**
- * FWUPD_SECURITY_ATTR_ID_UEFI_PK:
+ * FWUPD_SECURITY_ATTR_ID_UEFI_PK: (skip)
  *
  * Host Security ID attribute for UEFI PK
  *
@@ -286,7 +284,7 @@ G_BEGIN_DECLS
  **/
 #define FWUPD_SECURITY_ATTR_ID_UEFI_PK "org.fwupd.hsi.Uefi.Pk"
 /**
- * FWUPD_SECURITY_ATTR_ID_SUPPORTED_CPU:
+ * FWUPD_SECURITY_ATTR_ID_SUPPORTED_CPU: (skip)
  *
  * Host Security ID attribute for Supported CPU
  *
@@ -294,7 +292,7 @@ G_BEGIN_DECLS
  **/
 #define FWUPD_SECURITY_ATTR_ID_SUPPORTED_CPU "org.fwupd.hsi.SupportedCpu"
 /**
- * FWUPD_SECURITY_ATTR_ID_AMD_ROLLBACK_PROTECTION:
+ * FWUPD_SECURITY_ATTR_ID_AMD_ROLLBACK_PROTECTION: (skip)
  *
  * Host Security ID attribute for Rollback protection of AMD platform
  * firmware
@@ -303,7 +301,7 @@ G_BEGIN_DECLS
  **/
 #define FWUPD_SECURITY_ATTR_ID_AMD_ROLLBACK_PROTECTION "org.fwupd.hsi.Amd.RollbackProtection"
 /**
- * FWUPD_SECURITY_ATTR_ID_AMD_ENTRY_SIGN:
+ * FWUPD_SECURITY_ATTR_ID_AMD_ENTRY_SIGN: (skip)
  *
  * Host Security ID attribute for entry sign protection of AMD platform firmware
  *
@@ -311,7 +309,7 @@ G_BEGIN_DECLS
  **/
 #define FWUPD_SECURITY_ATTR_ID_AMD_ENTRY_SIGN "org.fwupd.hsi.Amd.EntrySign"
 /**
- * FWUPD_SECURITY_ATTR_ID_AMD_SPI_WRITE_PROTECTION:
+ * FWUPD_SECURITY_ATTR_ID_AMD_SPI_WRITE_PROTECTION: (skip)
  *
  * Host Security ID attribute for SPI Write protection
  *
@@ -319,7 +317,7 @@ G_BEGIN_DECLS
  **/
 #define FWUPD_SECURITY_ATTR_ID_AMD_SPI_WRITE_PROTECTION "org.fwupd.hsi.Amd.SpiWriteProtection"
 /**
- * FWUPD_SECURITY_ATTR_ID_AMD_SPI_REPLAY_PROTECTION:
+ * FWUPD_SECURITY_ATTR_ID_AMD_SPI_REPLAY_PROTECTION: (skip)
  *
  * Host Security ID attribute for SPI replay protection
  *
@@ -327,7 +325,7 @@ G_BEGIN_DECLS
  **/
 #define FWUPD_SECURITY_ATTR_ID_AMD_SPI_REPLAY_PROTECTION "org.fwupd.hsi.Amd.SpiReplayProtection"
 /**
- * FWUPD_SECURITY_ATTR_ID_HOST_EMULATION:
+ * FWUPD_SECURITY_ATTR_ID_HOST_EMULATION: (skip)
  *
  * Host Security ID attribute for host emulation
  *
@@ -335,7 +333,7 @@ G_BEGIN_DECLS
  **/
 #define FWUPD_SECURITY_ATTR_ID_HOST_EMULATION "org.fwupd.hsi.HostEmulation"
 /**
- * FWUPD_SECURITY_ATTR_ID_BIOS_ROLLBACK_PROTECTION:
+ * FWUPD_SECURITY_ATTR_ID_BIOS_ROLLBACK_PROTECTION: (skip)
  *
  * Host Security ID attribute for Rollback protection of BIOS firmware
  *
@@ -343,7 +341,7 @@ G_BEGIN_DECLS
  **/
 #define FWUPD_SECURITY_ATTR_ID_BIOS_ROLLBACK_PROTECTION "org.fwupd.hsi.Bios.RollbackProtection"
 /**
- * FWUPD_SECURITY_ATTR_ID_INTEL_GDS:
+ * FWUPD_SECURITY_ATTR_ID_INTEL_GDS: (skip)
  *
  * Host Security ID attribute indicating the processor is safe against Gather Data Sampling.
  *
@@ -351,7 +349,7 @@ G_BEGIN_DECLS
  **/
 #define FWUPD_SECURITY_ATTR_ID_INTEL_GDS "org.fwupd.hsi.IntelGds"
 /**
- * FWUPD_SECURITY_ATTR_ID_BIOS_CAPSULE_UPDATES:
+ * FWUPD_SECURITY_ATTR_ID_BIOS_CAPSULE_UPDATES: (skip)
  *
  * Host Security ID attribute indicating Capsule updates are supported by the BIOS.
  *
@@ -359,7 +357,7 @@ G_BEGIN_DECLS
  **/
 #define FWUPD_SECURITY_ATTR_ID_BIOS_CAPSULE_UPDATES "org.fwupd.hsi.Bios.CapsuleUpdates"
 /**
- * FWUPD_SECURITY_ATTR_ID_SMAP:
+ * FWUPD_SECURITY_ATTR_ID_SMAP: (skip)
  *
  * Host Security ID attribute for SMAP
  *
@@ -369,7 +367,7 @@ G_BEGIN_DECLS
  **/
 #define FWUPD_SECURITY_ATTR_ID_SMAP "org.fwupd.hsi.Smap"
 /**
- * FWUPD_SECURITY_ATTR_ID_CET_ENABLED:
+ * FWUPD_SECURITY_ATTR_ID_CET_ENABLED: (skip)
  *
  * Host Security ID attribute for Intel CET enabled
  *
@@ -379,7 +377,7 @@ G_BEGIN_DECLS
  **/
 #define FWUPD_SECURITY_ATTR_ID_CET_ENABLED "org.fwupd.hsi.Cet.Enabled"
 /**
- * FWUPD_SECURITY_ATTR_ID_CET_ACTIVE:
+ * FWUPD_SECURITY_ATTR_ID_CET_ACTIVE: (skip)
  *
  * Host Security ID attribute for Intel CET active
  *
@@ -389,7 +387,7 @@ G_BEGIN_DECLS
  **/
 #define FWUPD_SECURITY_ATTR_ID_CET_ACTIVE "org.fwupd.hsi.Cet.Active"
 /**
- * FWUPD_SECURITY_ATTR_ID_AMD_SMM_LOCKED:
+ * FWUPD_SECURITY_ATTR_ID_AMD_SMM_LOCKED: (skip)
  *
  * Host Security ID attribute for AMD SMM locked
  *
@@ -397,7 +395,7 @@ G_BEGIN_DECLS
  **/
 #define FWUPD_SECURITY_ATTR_ID_AMD_SMM_LOCKED "org.fwupd.hsi.Amd.SmmLocked"
 /**
- * FWUPD_SECURITY_ATTR_ID_UEFI_MEMORY_PROTECTION:
+ * FWUPD_SECURITY_ATTR_ID_UEFI_MEMORY_PROTECTION: (skip)
  *
  * Host Security ID attribute for UEFI memory protection
  *
@@ -405,7 +403,7 @@ G_BEGIN_DECLS
  **/
 #define FWUPD_SECURITY_ATTR_ID_UEFI_MEMORY_PROTECTION "org.fwupd.hsi.Uefi.MemoryProtection"
 /**
- * FWUPD_SECURITY_ATTR_ID_UEFI_DB:
+ * FWUPD_SECURITY_ATTR_ID_UEFI_DB: (skip)
  *
  * Host Security ID attribute for UEFI db certificate store
  *
@@ -413,7 +411,7 @@ G_BEGIN_DECLS
  **/
 #define FWUPD_SECURITY_ATTR_ID_UEFI_DB "org.fwupd.hsi.Uefi.Db"
 /**
- * FWUPD_SECURITY_ATTR_HP_SURESTART:
+ * FWUPD_SECURITY_ATTR_HP_SURESTART: (skip)
  *
  * Host Security ID attribute for HP Surestart
  *
@@ -421,7 +419,7 @@ G_BEGIN_DECLS
  **/
 #define FWUPD_SECURITY_ATTR_ID_HP_SURESTART "org.fwupd.hsi.Hp.Surestart"
 /**
- * FWUPD_SECURITY_ATTR_ID_AMD_PLATFORM_SECURE_BOOT:
+ * FWUPD_SECURITY_ATTR_ID_AMD_PLATFORM_SECURE_BOOT: (skip)
  *
  * Host Security ID attribute for Platform Secure Boot of AMD platform
  * firmware
@@ -429,8 +427,6 @@ G_BEGIN_DECLS
  * Since: 2.1.1
  **/
 #define FWUPD_SECURITY_ATTR_ID_AMD_PLATFORM_SECURE_BOOT "org.fwupd.hsi.Amd.PlatformSecureBoot"
-
-#endif /* __GI_SCANNER__ */
 
 FwupdSecurityAttr *
 fwupd_security_attr_copy(FwupdSecurityAttr *self) G_GNUC_NON_NULL(1);
