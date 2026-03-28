@@ -5,4 +5,5 @@ members = [
     "fwupdplugin-sys",
     "fwupdplugin",
     "plugins/fu-plugin-example",
+    "plugins/hughski-colorhug-rs",
 ]
