@@ -52,7 +52,7 @@ fu_ifwi_cpd_firmware_export(FuFirmware *firmware, FuFirmwareExportFlags flags, X
 static gboolean
 fu_ifwi_cpd_firmware_parse_manifest(FuIfwiCpdFirmware *self,
 				    FuFirmware *firmware,
-				    GInputStream *stream,
+				    FuInputStream *stream,
 				    FuFirmwareParseFlags flags,
 				    GError **error)
 {
@@ -108,7 +108,7 @@ fu_ifwi_cpd_firmware_parse_manifest(FuIfwiCpdFirmware *self,
 		guint32 extension_length = 0;
 		g_autoptr(FuFirmware) img = fu_firmware_new();
 		g_autoptr(FuStructIfwiCpdManifestExt) st_mex = NULL;
-		g_autoptr(GInputStream) partial_stream = NULL;
+		g_autoptr(FuInputStream) partial_stream = NULL;
 
 		/* set the extension type as the index */
 		st_mex = fu_struct_ifwi_cpd_manifest_ext_parse_stream(stream, offset, error);
@@ -156,7 +156,7 @@ fu_ifwi_cpd_firmware_parse_manifest(FuIfwiCpdFirmware *self,
 
 static gboolean
 fu_ifwi_cpd_firmware_validate(FuFirmware *firmware,
-			      GInputStream *stream,
+			      FuInputStream *stream,
 			      gsize offset,
 			      GError **error)
 {
@@ -165,7 +165,7 @@ fu_ifwi_cpd_firmware_validate(FuFirmware *firmware,
 
 static gboolean
 fu_ifwi_cpd_firmware_parse(FuFirmware *firmware,
-			   GInputStream *stream,
+			   FuInputStream *stream,
 			   FuFirmwareParseFlags flags,
 			   GError **error)
 {
@@ -201,7 +201,7 @@ fu_ifwi_cpd_firmware_parse(FuFirmware *firmware,
 		g_autofree gchar *id = NULL;
 		g_autoptr(FuFirmware) img = fu_firmware_new();
 		g_autoptr(FuStructIfwiCpdEntry) st_ent = NULL;
-		g_autoptr(GInputStream) partial_stream = NULL;
+		g_autoptr(FuInputStream) partial_stream = NULL;
 
 		/* the IDX is the position in the file */
 		fu_firmware_set_idx(img, i);

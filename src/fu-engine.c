@@ -929,7 +929,7 @@ fu_engine_get_releases_for_container_checksum(FuEngine *self, const gchar *csum)
 
 /* does this exist in any enabled remote */
 gchar *
-fu_engine_get_remote_id_for_stream(FuEngine *self, GInputStream *stream)
+fu_engine_get_remote_id_for_stream(FuEngine *self, FuInputStream *stream)
 {
 	GChecksumType checksum_types[] = {
 	    G_CHECKSUM_SHA256,
@@ -937,7 +937,7 @@ fu_engine_get_remote_id_for_stream(FuEngine *self, GInputStream *stream)
 	};
 
 	g_return_val_if_fail(FU_IS_ENGINE(self), NULL);
-	g_return_val_if_fail(G_IS_INPUT_STREAM(stream), NULL);
+	g_return_val_if_fail(FU_IS_INPUT_STREAM(stream), NULL);
 
 	for (guint i = 0; i < G_N_ELEMENTS(checksum_types); i++) {
 		g_autofree gchar *csum = NULL;
@@ -2469,7 +2469,7 @@ fu_engine_publish_release(FuEngine *self, FuRelease *release, GError **error)
 {
 #ifdef HAVE_PASSIM
 	FuDevice *device = fu_release_get_device(release);
-	GInputStream *stream = fu_release_get_stream(release);
+	FuInputStream *stream = fu_release_get_stream(release);
 
 	/* lazy load */
 	fu_engine_ensure_passim_client(self);
@@ -2892,7 +2892,7 @@ fu_engine_install_release(FuEngine *self,
 	FuEngineRequest *request = fu_release_get_request(release);
 	FuPlugin *plugin;
 	FwupdFeatureFlags feature_flags = FWUPD_FEATURE_FLAG_NONE;
-	GInputStream *stream = fu_release_get_stream(release);
+	FuInputStream *stream = fu_release_get_stream(release);
 	const gchar *tmp;
 	g_autoptr(FuDevice) device = NULL;
 	g_autoptr(FuDevice) device_tmp = NULL;
@@ -3089,12 +3089,12 @@ fu_engine_get_plugin_by_name(FuEngine *self, const gchar *name, GError **error)
 }
 
 gboolean
-fu_engine_emulation_load(FuEngine *self, GInputStream *stream, GError **error)
+fu_engine_emulation_load(FuEngine *self, FuInputStream *stream, GError **error)
 {
 	gsize streamsz = 0;
 
 	g_return_val_if_fail(FU_IS_ENGINE(self), FALSE);
-	g_return_val_if_fail(G_IS_INPUT_STREAM(stream), FALSE);
+	g_return_val_if_fail(FU_IS_INPUT_STREAM(stream), FALSE);
 	g_return_val_if_fail(error == NULL || *error == NULL, FALSE);
 
 	/* sanity check */
@@ -3269,7 +3269,7 @@ fu_engine_device_check_power(FuEngine *self,
 static FuFirmware *
 fu_engine_prepare_firmware(FuEngine *self,
 			   const gchar *device_id,
-			   GInputStream *stream,
+			   FuInputStream *stream,
 			   FuProgress *progress,
 			   FuFirmwareParseFlags flags,
 			   GError **error)
@@ -3808,7 +3808,7 @@ fu_engine_install_loop(FuEngine *self,
 		       FuProgress *progress,
 		       GError **error)
 {
-	GInputStream *stream_fw;
+	FuInputStream *stream_fw;
 	gsize streamsz = 0;
 	g_autoptr(FuDevice) device = NULL;
 	g_autoptr(FuDevice) device_tmp = NULL;
@@ -4327,7 +4327,7 @@ fu_engine_appstream_upgrade_cb(XbBuilderFixup *self,
 	return TRUE;
 }
 
-static GInputStream *
+static FuInputStream *
 fu_engine_builder_cabinet_adapter_cb(XbBuilderSource *source,
 				     XbBuilderSourceCtx *ctx,
 				     gpointer user_data,
@@ -4335,7 +4335,7 @@ fu_engine_builder_cabinet_adapter_cb(XbBuilderSource *source,
 				     GError **error)
 {
 	FuEngine *self = FU_ENGINE(user_data);
-	GInputStream *stream = xb_builder_source_ctx_get_stream(ctx);
+	FuInputStream *stream = xb_builder_source_ctx_get_stream(ctx);
 	g_autoptr(FuCabinet) cabinet = NULL;
 	g_autoptr(XbSilo) silo = NULL;
 	g_autofree gchar *xml = NULL;
@@ -4809,7 +4809,7 @@ static FuJcatResult *
 fu_engine_get_system_jcat_result(FuEngine *self, FwupdRemote *remote, GError **error)
 {
 	g_autoptr(GBytes) blob = NULL;
-	g_autoptr(GInputStream) istream = NULL;
+	g_autoptr(FuInputStream) istream = NULL;
 	g_autoptr(GPtrArray) results = NULL;
 	g_autoptr(FwupdJcatItem) jcat_item = NULL;
 	g_autoptr(FwupdJcatFile) jcat_file = fwupd_jcat_file_new();
@@ -4912,7 +4912,7 @@ fu_engine_update_metadata_bytes(FuEngine *self,
 {
 	g_autoptr(FwupdRemote) remote = NULL;
 	g_autoptr(GError) error_local = NULL;
-	g_autoptr(GInputStream) istream = NULL;
+	g_autoptr(FuInputStream) istream = NULL;
 	g_autoptr(GPtrArray) results = NULL;
 	g_autoptr(FwupdJcatFile) jcat_file = fwupd_jcat_file_new();
 	g_autoptr(FwupdJcatItem) jcat_item = NULL;
@@ -5056,8 +5056,8 @@ fu_engine_update_metadata(FuEngine *self,
 #ifdef HAVE_GIO_UNIX
 	g_autoptr(GBytes) bytes_raw = NULL;
 	g_autoptr(GBytes) bytes_sig = NULL;
-	g_autoptr(GInputStream) stream_fd = NULL;
-	g_autoptr(GInputStream) stream_sig = NULL;
+	g_autoptr(FuInputStream) stream_fd = NULL;
+	g_autoptr(FuInputStream) stream_sig = NULL;
 
 	g_return_val_if_fail(FU_IS_ENGINE(self), FALSE);
 	g_return_val_if_fail(remote_id != NULL, FALSE);
@@ -5105,7 +5105,7 @@ fu_engine_update_metadata(FuEngine *self,
 /**
  * fu_engine_build_cabinet_from_stream:
  * @self: a #FuEngine
- * @stream: a #GInputStream
+ * @stream: a #FuInputStream
  * @error: (nullable): optional return location for an error
  *
  * Creates a silo from a .cab file blob.
@@ -5113,13 +5113,13 @@ fu_engine_update_metadata(FuEngine *self,
  * Returns: (transfer container): a #XbSilo, or %NULL
  **/
 FuCabinet *
-fu_engine_build_cabinet_from_stream(FuEngine *self, GInputStream *stream, GError **error)
+fu_engine_build_cabinet_from_stream(FuEngine *self, FuInputStream *stream, GError **error)
 {
 	FuFirmwareParseFlags flags = FU_FIRMWARE_PARSE_FLAG_CACHE_STREAM;
 	g_autoptr(FuCabinet) cabinet = fu_cabinet_new();
 
 	g_return_val_if_fail(FU_IS_ENGINE(self), NULL);
-	g_return_val_if_fail(G_IS_INPUT_STREAM(stream), NULL);
+	g_return_val_if_fail(FU_IS_INPUT_STREAM(stream), NULL);
 	g_return_val_if_fail(error == NULL || *error == NULL, NULL);
 
 	/* distrusting RSA? */
@@ -5264,7 +5264,7 @@ fu_engine_get_details_sort_cb(gconstpointer a, gconstpointer b)
  * fu_engine_get_details:
  * @self: a #FuEngine
  * @request: a #FuEngineRequest
- * @stream: a seekable #GInputStream
+ * @stream: a seekable #FuInputStream
  * @error: (nullable): optional return location for an error
  *
  * Gets the details about a local file.
@@ -5276,7 +5276,7 @@ fu_engine_get_details_sort_cb(gconstpointer a, gconstpointer b)
 GPtrArray *
 fu_engine_get_details(FuEngine *self,
 		      FuEngineRequest *request,
-		      GInputStream *stream,
+		      FuInputStream *stream,
 		      GError **error)
 {
 	GChecksumType checksum_types[] = {
@@ -5290,7 +5290,7 @@ fu_engine_get_details(FuEngine *self,
 	g_autoptr(GPtrArray) rels_by_csum = NULL;
 
 	g_return_val_if_fail(FU_IS_ENGINE(self), NULL);
-	g_return_val_if_fail(G_IS_INPUT_STREAM(stream), NULL);
+	g_return_val_if_fail(FU_IS_INPUT_STREAM(stream), NULL);
 	g_return_val_if_fail(error == NULL || *error == NULL, NULL);
 
 	cabinet = fu_engine_build_cabinet_from_stream(self, stream, error);
@@ -7678,8 +7678,8 @@ fu_engine_load_host_emulation(FuEngine *self, const gchar *fn, GError **error)
 	g_autoptr(FwupdJsonObject) json_obj = NULL;
 	g_autoptr(FwupdJsonParser) json_parser = fwupd_json_parser_new();
 	g_autoptr(GFile) file = g_file_new_for_path(fn);
-	g_autoptr(GInputStream) istream_json = NULL;
-	g_autoptr(GInputStream) istream_raw = NULL;
+	g_autoptr(FuInputStream) istream_json = NULL;
+	g_autoptr(FuInputStream) istream_raw = NULL;
 	g_autoptr(FwupdSecurityAttr) attr = NULL;
 	g_autoptr(FuBiosSettings) bios_settings = fu_context_get_bios_settings(self->ctx);
 
@@ -7696,7 +7696,7 @@ fu_engine_load_host_emulation(FuEngine *self, const gchar *fn, GError **error)
 	fu_security_attrs_append(self->host_security_attrs, attr);
 
 	/* add from file */
-	istream_raw = G_INPUT_STREAM(g_file_read(file, NULL, error));
+	istream_raw = FU_INPUT_STREAM(g_file_read(file, NULL, error));
 	if (istream_raw == NULL)
 		return FALSE;
 	if (g_str_has_suffix(fn, ".gz")) {
