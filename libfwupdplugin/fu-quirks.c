@@ -21,6 +21,7 @@
 
 #include "fu-context-private.h"
 #include "fu-input-stream.h"
+#include "fu-memory-input-stream.h"
 #include "fu-path-store.h"
 #include "fu-path.h"
 #include "fu-quirks.h"
@@ -277,7 +278,7 @@ fu_quirks_convert_quirk_to_xml_cb(XbBuilderSource *source,
 	bytes_xml = fu_quirks_convert_keyfile_to_xml(self, bytes, error);
 	if (bytes_xml == NULL)
 		return NULL;
-	return g_memory_input_stream_new_from_bytes(bytes_xml);
+	return fu_memory_input_stream_new_from_bytes(bytes_xml);
 }
 
 static gint

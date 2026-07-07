@@ -4350,7 +4350,7 @@ fu_engine_builder_cabinet_adapter_cb(XbBuilderSource *source,
 	xml = xb_silo_export(silo, XB_NODE_EXPORT_FLAG_NONE, error);
 	if (xml == NULL)
 		return NULL;
-	return g_memory_input_stream_new_from_data(g_steal_pointer(&xml), -1, g_free);
+	return fu_memory_input_stream_new_from_data(g_steal_pointer(&xml), -1, g_free);
 }
 
 static XbBuilderSource *
@@ -4941,7 +4941,7 @@ fu_engine_update_metadata_bytes(FuEngine *self,
 	}
 
 	/* verify JCatFile, or create a dummy one from legacy data */
-	istream = g_memory_input_stream_new_from_bytes(bytes_sig);
+	istream = fu_memory_input_stream_new_from_bytes(bytes_sig);
 	if (!fwupd_jcat_file_import_stream(jcat_file, istream, error))
 		return FALSE;
 

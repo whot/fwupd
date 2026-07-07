@@ -13,6 +13,7 @@
 #include "fu-common.h"
 #include "fu-coswid-firmware.h"
 #include "fu-input-stream.h"
+#include "fu-memory-input-stream.h"
 #include "fu-lzma-common.h"
 #include "fu-partial-input-stream.h"
 #include "fu-uswid-firmware.h"
@@ -270,7 +271,7 @@ fu_uswid_firmware_write(FuFirmware *firmware, GError **error)
 		g_autoptr(FuInputStream) istream2 = NULL;
 
 		conv = G_CONVERTER(g_zlib_compressor_new(G_ZLIB_COMPRESSOR_FORMAT_ZLIB, -1));
-		istream1 = g_memory_input_stream_new_from_data(payload->data, payload->len, NULL);
+		istream1 = fu_memory_input_stream_new_from_data(payload->data, payload->len, NULL);
 		istream2 = g_converter_input_stream_new(istream1, conv);
 		payload_blob = fu_input_stream_read_bytes(istream2, 0, G_MAXSIZE, NULL, error);
 		if (payload_blob == NULL)
