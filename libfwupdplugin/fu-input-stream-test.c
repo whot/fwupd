@@ -139,7 +139,7 @@ fu_input_stream_func(void)
 	csum = g_compute_checksum_for_data(G_CHECKSUM_MD5, (const guchar *)buf, bufsz);
 
 	file = g_file_new_for_path(fn);
-	stream = FU_INPUT_STREAM(g_file_read(file, NULL, &error));
+	stream = FU_INPUT_STREAM(fu_file_input_stream_from_file(file, NULL, &error));
 	g_assert_no_error(error);
 	g_assert_nonnull(stream);
 

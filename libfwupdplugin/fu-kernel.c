@@ -14,6 +14,7 @@
 #include <sys/utsname.h>
 #endif
 
+#include "fu-file-input-stream.h"
 #include "fu-input-stream.h"
 #include "fu-kernel.h"
 #include "fu-path.h"
@@ -246,7 +247,7 @@ fu_kernel_get_config(FuPathStore *pstore, GError **error)
 		g_autoptr(FuInputStream) istream1 = NULL;
 		g_autoptr(FuInputStream) istream2 = NULL;
 
-		istream1 = FU_INPUT_STREAM(g_file_read(file, NULL, error));
+		istream1 = FU_INPUT_STREAM(fu_file_input_stream_from_file(file, NULL, error));
 		if (istream1 == NULL)
 			return NULL;
 		conv = G_CONVERTER(g_zlib_decompressor_new(G_ZLIB_COMPRESSOR_FORMAT_GZIP));

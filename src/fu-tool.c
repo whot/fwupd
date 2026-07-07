@@ -5604,7 +5604,7 @@ fu_util_jcat_load_filename(FuUtil *self, const gchar *filename, GError **error)
 
 	if (g_file_query_exists(gfile, self->cancellable)) {
 		g_autoptr(FuInputStream) istream = NULL;
-		istream = FU_INPUT_STREAM(g_file_read(gfile, self->cancellable, error));
+		istream = FU_INPUT_STREAM(fu_file_input_stream_from_file(gfile, self->cancellable, error));
 		if (istream == NULL)
 			return NULL;
 		if (!fwupd_jcat_file_import_stream(file, istream, error))

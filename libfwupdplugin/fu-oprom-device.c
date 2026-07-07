@@ -7,6 +7,7 @@
 #include "config.h"
 
 #include "fu-device-locker.h"
+#include "fu-file-input-stream.h"
 #include "fu-input-stream.h"
 #include "fu-oprom-device.h"
 #include "fu-output-stream.h"
@@ -89,7 +90,7 @@ fu_oprom_device_dump_firmware(FuDevice *device, FuProgress *progress, GError **e
 	/* open file */
 	rom_fn = g_build_filename(fu_udev_device_get_sysfs_path(FU_UDEV_DEVICE(self)), "rom", NULL);
 	file = g_file_new_for_path(rom_fn);
-	stream = FU_INPUT_STREAM(g_file_read(file, NULL, &error_local));
+	stream = FU_INPUT_STREAM(fu_file_input_stream_from_file(file, NULL, &error_local));
 	if (stream == NULL) {
 		g_set_error_literal(error,
 				    FWUPD_ERROR,

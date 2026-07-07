@@ -7696,7 +7696,7 @@ fu_engine_load_host_emulation(FuEngine *self, const gchar *fn, GError **error)
 	fu_security_attrs_append(self->host_security_attrs, attr);
 
 	/* add from file */
-	istream_raw = FU_INPUT_STREAM(g_file_read(file, NULL, error));
+	istream_raw = FU_INPUT_STREAM(fu_file_input_stream_from_file(file, NULL, error));
 	if (istream_raw == NULL)
 		return FALSE;
 	if (g_str_has_suffix(fn, ".gz")) {

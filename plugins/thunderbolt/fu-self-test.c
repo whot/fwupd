@@ -238,7 +238,7 @@ mock_tree_firmware_verify(const FuThunderboltMockTree *node, GBytes *data)
 	nvm_device = g_file_new_for_path(node->nvm_non_active);
 	nvm = g_file_get_child(nvm_device, "nvmem");
 
-	is = (FuInputStream *)g_file_read(nvm, NULL, &error);
+	is = (FuInputStream *)fu_file_input_stream_from_file(nvm, NULL, &error);
 	g_assert_no_error(error);
 	g_assert_nonnull(is);
 

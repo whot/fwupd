@@ -20,6 +20,7 @@
 #include "fwupd-error.h"
 
 #include "fu-context-private.h"
+#include "fu-file-input-stream.h"
 #include "fu-input-stream.h"
 #include "fu-memory-input-stream.h"
 #include "fu-path-store.h"
@@ -972,7 +973,7 @@ fu_quirks_db_load(FuQuirks *self, GError **error)
 			continue;
 		}
 		g_debug("indexing vendor IDs from %s", fn);
-		stream = FU_INPUT_STREAM(g_file_read(file, NULL, error));
+		stream = FU_INPUT_STREAM(fu_file_input_stream_from_file(file, NULL, error));
 		if (stream == NULL)
 			return FALSE;
 		helper->self = self;
