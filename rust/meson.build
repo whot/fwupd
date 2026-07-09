@@ -16,6 +16,15 @@ fwupd_rs_lib = fwupd_ffi_pkg.library(
   install: false,
 )
 
+# Generate per-module C headers from the Rust FFI crate using cbindgen.
+cbindgen = find_program('cbindgen')
+fwupd_rust_ffi_incdir = include_directories('.')
+
+cbindgen_rust_sources = [
+  'fwupd-ffi/src/lib.rs',
+  'fwupd/src/lib.rs',
+]
+
 # Unit tests for the pure Rust library
 rustmod.test(
   'fwupd-rust',
