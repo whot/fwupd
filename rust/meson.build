@@ -1,3 +1,21 @@
+rustc = meson.get_compiler('rust')
+
+
+if rustc.version().version_compare('>=1.80.0')
+  add_project_arguments(
+    '--check-cfg',
+    'cfg(supports_rust_1_85)',
+    language: 'rust',
+  )
+endif
+if rustc.version().version_compare('>=1.85.0')
+  add_project_arguments(
+    '--cfg',
+    'supports_rust_1_85',
+    language: 'rust',
+  )
+endif
+
 fwupd_pkg = cargo_ws.package('fwupd')
 fwupd_ffi_pkg = cargo_ws.package('fwupd-ffi')
 

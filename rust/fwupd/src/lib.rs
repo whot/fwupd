@@ -8,6 +8,7 @@
 
 mod bitflags;
 pub mod compressor;
+pub mod secure_bytes;
 pub mod streams;
 
 pub use crate::bitflags::{BitflagIter, Bitflags};

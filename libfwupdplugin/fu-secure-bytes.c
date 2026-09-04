@@ -16,14 +16,15 @@
 #endif
 
 #include "fwupd-error.h"
+#include "fwupd-rust-secure-bytes.h"
 
 #include "fu-bytes.h"
 #include "fu-path.h"
 #include "fu-secure-bytes.h"
 
 struct FuSecureBytes {
+	FuRsBorrowedSecureBytes *rust;
 	guint8 *buf;
-	gsize bufsz;
 	GDestroyNotify destroy_fn;
 };
 
@@ -46,25 +47,11 @@ fu_secure_bytes_new(guint8 *buf, gsize bufsz, GDestroyNotify destroy_fn)
 {
 	FuSecureBytes *self = g_new0(FuSecureBytes, 1);
 	if (buf != NULL) {
+		self->rust = fu_rs_borrowed_secure_bytes_new(buf, bufsz);
 		self->buf = buf;
-		self->bufsz = bufsz;
 	}
 	self->destroy_fn = destroy_fn;
 	return self;
-}
-
-static void
-fu_secure_bytes_memzero(guint8 *buf, gsize bufsz)
-{
-	if (buf == NULL || bufsz == 0)
-		return;
-#ifdef HAVE_GNUTLS
-	gnutls_memset(buf, 0x0, bufsz);
-#elif defined HAVE_LIBCRYPTO
-	OPENSSL_cleanse(buf, bufsz);
-#else
-	memset(buf, 0x0, bufsz);
-#endif
 }
 
 /**
@@ -83,8 +70,8 @@ void
 fu_secure_bytes_free(FuSecureBytes *self)
 {
 	g_return_if_fail(self != NULL);
-	if (self->buf != NULL)
-		fu_secure_bytes_memzero(self->buf, self->bufsz);
+	if (self->rust != NULL)
+		fu_rs_borrowed_secure_bytes_free(self->rust);
 	if (self->destroy_fn != NULL)
 		self->destroy_fn(self->buf);
 	g_free(self);
@@ -104,7 +91,9 @@ gsize
 fu_secure_bytes_get_size(FuSecureBytes *self)
 {
 	g_return_val_if_fail(self != NULL, G_MAXSIZE);
-	return self->bufsz;
+	if (self->rust)
+		return fu_rs_borrowed_secure_bytes_get_size(self->rust);
+	return 0;
 }
 
 /**
@@ -121,7 +110,9 @@ const guint8 *
 fu_secure_bytes_get_data(FuSecureBytes *self)
 {
 	g_return_val_if_fail(self != NULL, NULL);
-	return self->buf;
+	if (self->rust)
+		return fu_rs_borrowed_secure_bytes_get_data(self->rust);
+	return NULL;
 }
 
 /**
@@ -174,15 +165,19 @@ fu_secure_bytes_set_contents(FuSecureBytes *self, const gchar *filename, gint mo
 {
 	g_return_val_if_fail(self != NULL, FALSE);
 	g_return_val_if_fail(self->buf != NULL, FALSE);
+	g_return_val_if_fail(self->rust != NULL, FALSE);
 	g_return_val_if_fail(filename != NULL, FALSE);
 	g_return_val_if_fail(error == NULL || *error == NULL, FALSE);
 
 	if (!fu_path_mkdir_parent(filename, error))
 		return FALSE;
 #if GLIB_CHECK_VERSION(2, 66, 0)
+	g_info(".... here with %p at size %zu",
+	       (gchar *)fu_secure_bytes_get_data(self),
+	       fu_secure_bytes_get_size(self));
 	if (!g_file_set_contents_full(filename,
-				      (gchar *)self->buf,
-				      self->bufsz,
+				      (gchar *)fu_secure_bytes_get_data(self),
+				      fu_secure_bytes_get_size(self),
 				      G_FILE_SET_CONTENTS_CONSISTENT,
 				      mode,
 				      error)) {
@@ -190,7 +185,10 @@ fu_secure_bytes_set_contents(FuSecureBytes *self, const gchar *filename, gint mo
 		return FALSE;
 	}
 #else
-	if (!g_file_set_contents(filename, (gchar *)self->buf, self->bufsz, error)) {
+	if (!g_file_set_contents(filename,
+				 (gchar *)fu_secure_bytes_get_data(self),
+				 fu_secure_bytes_get_size(self),
+				 error)) {
 		fwupd_error_convert(error);
 		return FALSE;
 	}

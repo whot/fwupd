@@ -17,4 +17,5 @@
 
 pub mod compressor;
 pub mod glib;
+pub mod secure_bytes;
 pub mod streams;
