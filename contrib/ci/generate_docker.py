@@ -51,16 +51,10 @@ def generate_dockerfile(
     data = {
         "VERSION": version,
         "DISTRO": distro,
+        "ARCH": arch,
     }
     if variant:
         data["VARIANT"] = variant
-
-    # special cases
-    match (distro, variant):
-        case ("debian", "i386"):
-            data["PLATFORM"] = "linux/i386"
-        case _:
-            pass
 
     if cross:
         data["CROSSARCH"] = cross
@@ -71,7 +65,7 @@ def generate_dockerfile(
             distro, ARCH_TO_DEPS_MAP[cross], False, cross=True
         )
         deps = deps_parsed + build_indep + [f"crossbuild-essential-{cross}"]
-    elif variant in ["i386", "android"]:
+    elif variant in ["android"]:
         deps_parsed, build_indep = parse_dependencies(distro, variant, False)
         deps = deps_parsed + build_indep
     else:
@@ -104,7 +98,7 @@ parser.add_argument(
     help="Distribution version/tag (e.g. 44, testing, rolling)",
 )
 parser.add_argument(
-    "--variant", default=None, help="Build variant (e.g. i386, android, cross-s390x)"
+    "--variant", default=None, help="Build variant (e.g. android, cross-s390x)"
 )
 
 subparsers = parser.add_subparsers(dest="command")

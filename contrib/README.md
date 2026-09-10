@@ -38,7 +38,7 @@ To prepare the Docker container run one of these commands:
 
 ```shell
 ./generate_docker.py --distro debian --version testing --arch amd64 build
-./generate_docker.py --distro debian --version testing --arch amd64 --variant i386 build
+./generate_docker.py --distro debian --version testing --arch i386 build
 ./generate_docker.py --distro ubuntu --version rolling --arch amd64 build
 ```
 
